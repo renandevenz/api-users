@@ -1,0 +1,81 @@
+openapi: 3.0.2
+info:
+  title: 'API Usuários '
+  version: 1.0.0
+  description: 'API modelo para cadastro e consulta de usuários '
+paths:
+  /users/v1/cadastrar:
+    summary: Endpoint para cadastrar um usuário.
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DadosUsuarioRequest'
+        required: true
+      responses:
+        '201':
+          description: Criação.
+      operationId: salvar
+  /users/v1/buscarPorNome:
+    summary: Endpoint de busca de usuário por nome.
+    get:
+      responses:
+        '200':
+          $ref: '#/components/responses/UsuarioResponse'
+      operationId: buscar
+      summary: Método para buscar usuário por nome.
+    parameters:
+      -
+        name: nome
+        description: Nome do usuário.
+        schema:
+          type: string
+        in: header
+        required: true
+  /users/v1/buscarTodos:
+    summary: Buscar a lista de usuários.
+components:
+  schemas:
+    DadosUsuarioRequest:
+      title: Root Type for DadosUsuarioRequest
+      description: Dados para cadastro de usuario.
+      type: object
+      properties:
+        nome:
+          type: string
+        email:
+          type: string
+      example:
+        nome: renan
+        email: teste@teste.com
+    DadosUsuarioResponse:
+      title: Root Type for DadosUsuarioResponse
+      description: Response com os dados do usuário.
+      type: object
+      properties:
+        nome:
+          type: string
+        email:
+          type: string
+      example:
+        nome: renan
+        email: teste@teste.com
+    ListaDadosUsuarios:
+      title: Root Type for ListaDadosUsuarios
+      description: Lista com os dados dos usuários.
+      type: object
+      properties:
+        dadosUsuarioResponse:
+          type: array
+          items:
+            $ref: '#/components/schemas/DadosUsuarioResponse'
+      example:
+        dadosUsuarioResponse: []
+  responses:
+    UsuarioResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DadosUsuarioResponse'
+      description: Response entity.
