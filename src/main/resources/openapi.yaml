@@ -34,7 +34,13 @@ paths:
         in: header
         required: true
   /users/v1/buscarTodos:
-    summary: Buscar a lista de usuários.
+    summary: Enpoint para buscar a lista de usuários.
+    get:
+      responses:
+        '200':
+          $ref: '#/components/responses/ListaUsuarioResponse'
+      operationId: buscarTodos
+      summary: Método de busca de usuários.
 components:
   schemas:
     DadosUsuarioRequest:
@@ -61,17 +67,19 @@ components:
       example:
         nome: renan
         email: teste@teste.com
-    ListaDadosUsuarios:
-      title: Root Type for ListaDadosUsuarios
-      description: Lista com os dados dos usuários.
-      type: object
-      properties:
-        dadosUsuarioResponse:
-          type: array
-          items:
-            $ref: '#/components/schemas/DadosUsuarioResponse'
+    DadosUsuariosResponse:
+      title: Root Type for DadosUsuariosResponse
+      description: ''
+      type: array
+      items:
+        $ref: '#/components/schemas/DadosUsuarioResponse'
       example:
-        dadosUsuarioResponse: []
+        -
+          nome: some text
+          email: some text
+        -
+          nome: some text
+          email: some text
   responses:
     UsuarioResponse:
       content:
@@ -79,3 +87,9 @@ components:
           schema:
             $ref: '#/components/schemas/DadosUsuarioResponse'
       description: Response entity.
+    ListaUsuarioResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DadosUsuariosResponse'
+      description: Lista.

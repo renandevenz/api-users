@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * Dados para cadastro de usuario.
  */
 @ApiModel(description = "Dados para cadastro de usuario.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-04-12T14:56:11.923620-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-04-13T15:48:14.209762500-03:00[America/Sao_Paulo]")
 public class DadosUsuarioRequest   {
   @JsonProperty("nome")
   private String nome;

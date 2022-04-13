@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-04-12T14:56:11.923620-03:00[America/Sao_Paulo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-04-13T15:48:14.209762500-03:00[America/Sao_Paulo]")
 @Validated
 @Api(value = "users", description = "the users API")
 public interface UsersApi {
@@ -49,6 +49,33 @@ public interface UsersApi {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"nome\" : \"renan\", \"email\" : \"teste@teste.com\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /users/v1/buscarTodos : Método de busca de usuários.
+     *
+     * @return Lista. (status code 200)
+     */
+    @ApiOperation(value = "Método de busca de usuários.", nickname = "buscarTodos", notes = "", response = DadosUsuarioResponse.class, responseContainer = "List", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Lista.", response = DadosUsuarioResponse.class, responseContainer = "List") })
+    @GetMapping(
+        value = "/users/v1/buscarTodos",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<DadosUsuarioResponse>> buscarTodos() {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"nome\" : \"some text\", \"email\" : \"some text\" }, { \"nome\" : \"some text\", \"email\" : \"some text\" } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
