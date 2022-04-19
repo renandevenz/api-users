@@ -35,7 +35,7 @@ public class UsuarioDataSource implements BuscarUsuarioPort, SalvarUsuarioPort {
     @Override
     public void salvar(DadosUsuario usuario) {
         var mapper = UserEntityMapper.INSTANCE;
-        var entity = repository.findByNome(usuario.getNome());
-        mapper.toEntity(repository.save(entity));
+        var entity = mapper.toDomain(usuario);
+        repository.save(entity);
     }
 }

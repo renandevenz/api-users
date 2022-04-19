@@ -6,7 +6,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-04-18T10:07:43-0300",
+    date = "2022-04-19T14:23:20-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 18 (Azul Systems, Inc.)"
 )
 public class UserEntityMapperImpl implements UserEntityMapper {
@@ -23,5 +23,19 @@ public class UserEntityMapperImpl implements UserEntityMapper {
         dadosUsuario.setEmail( entity.getEmail() );
 
         return dadosUsuario;
+    }
+
+    @Override
+    public UserEntity toDomain(DadosUsuario domain) {
+        if ( domain == null ) {
+            return null;
+        }
+
+        UserEntity userEntity = new UserEntity();
+
+        userEntity.setNome( domain.getNome() );
+        userEntity.setEmail( domain.getEmail() );
+
+        return userEntity;
     }
 }
