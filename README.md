@@ -1,5 +1,5 @@
 <h1 align="center"> API Users </h1>
 
-![Hexagonal Arc Netflix](https://user-images.githubusercontent.com/49521755/167879030-7fc581e4-7aca-40a6-9fcc-cc0faf449794.png)
+<img width="420" alt="hexagonal_arc_v2" src="https://user-images.githubusercontent.com/49521755/167880999-e3722ed5-44a6-4c9a-869b-5aff51e4f6ea.png">
 
-Simple user API and show the new Netflix hexagonal architecture
+<B>Simple user API and show the new Netflix hexagonal architecture</B>
